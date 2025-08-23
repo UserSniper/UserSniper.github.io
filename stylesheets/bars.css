@@ -1,0 +1,33 @@
+#topbar {
+    font-family: 'Impact';
+    text-align: center;
+    white-space: nowrap;
+}
+#topbar h1 {
+    font-size: 96px;
+}
+
+
+
+#sidebar {
+    margin: 0;
+    padding: 0;
+}
+#sidebar h1 {
+    color: white;
+    text-align: center;
+}
+#sidebar .pagelink {
+    text-align: center;
+    border: ridge 2px #ff8787;
+}
+
+#links {
+    margin:0;
+    padding:0;
+}
+
+
+#links img {
+    display:inline;
+}

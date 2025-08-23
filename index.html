@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>usersniper's website</title>
+        <link rel="stylesheet" href="stylesheets/reset_margins.css">
+        <link rel="stylesheet" href="stylesheets/index.css">
+        <link rel="stylesheet" href="stylesheets/bars.css">
+        
+        <script src="jquery.min.js"></script>
+    </head>
+    
+    <body>
+        <!-- DA MAIN PAGE -->
+        <object id="page" type="text/html" data="pages/landing.html"></object>
+
+
+    
+        <!-- THE HEADER -->
+        <div id="topbar">
+            <img 
+                src="assets/sniper.png"
+                height="64px"
+            >
+            <h1 id="gohome" style="display:inline-block;">usersniper</h1>
+            <img 
+                src="assets/sniper.png"
+                height="64px"
+                style="display:inline-block;"
+            >
+        </div>
+        
+        <!-- SIDEBAR -->
+        <div id="sidebar">
+            <h1>Site Map</h1>
+            <p class="pagelink">go home lmao</p>
+            <br>
+            <p class="pagelink">stuff i made</p>
+            <p class="pagelink">about meeeee</p>
+        </div>
+
+
+
+
+
+        <!-- DA LINKS -->
+        <div id="links">
+            <img class="linkslink" src="assets/youtube.png" width="64" height="64">
+            <img class="linkslink" src="assets/discord.png" width="64" height="64">
+            <img class="linkslink" src="assets/github.png" width="64" height="64">
+        </div>
+    </body>
+
+    
+    
+    <script>
+        /*
+         * add pages here!!!!
+        */
+        const pagelist = [
+            "landing.html",
+            "stuff_i_made.html",
+            "about.html"
+        ];
+
+        const linkslist = [
+            "https://www.youtube.com/@UserSniper",
+            "https://www.discord.gg/Wt3kJ949X5",
+            "https://www.github.com/UserSniper"
+        ];
+
+
+
+
+
+        var $gohome = $("a#gohome");
+        $gohome.on("click",function(){
+            $("#page").prop("data","pages/landing.html");
+        });
+
+        var $pagelink = $(".pagelink");
+        $pagelink.on("click",function(){
+            var i = $pagelink.index(this);
+            $("#page").prop("data","pages/" + pagelist[i]);
+        });
+
+        var $linkslink = $(".linkslink");
+        $linkslink.on("click", function(){
+            var i = $linkslink.index(this);
+            window.open(linkslist[i], '_blank').focus();
+        });
+    </script>
+</html>
