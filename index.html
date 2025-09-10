@@ -15,6 +15,16 @@
 
 
     
+        <!-- SIDEBAR -->
+        <div id="sidebar">
+            <h1>Site Map</h1>
+            <p class="pagelink">go home lmao</p>
+            <br>
+            <p class="pagelink">stuff i made</p>
+            <p class="pagelink">about meeeee</p>
+            <p class="pagelink">test</p>
+        </div>
+
         <!-- THE HEADER -->
         <div id="topbar">
             <img 
@@ -28,18 +38,6 @@
                 style="display:inline-block;"
             >
         </div>
-        
-        <!-- SIDEBAR -->
-        <div id="sidebar">
-            <h1>Site Map</h1>
-            <p class="pagelink">go home lmao</p>
-            <br>
-            <p class="pagelink">stuff i made</p>
-            <p class="pagelink">about meeeee</p>
-            <p class="pagelink">test</p>
-        </div>
-
-
 
 
 
@@ -72,17 +70,46 @@
 
 
 
+        
+        const fileExists = file =>
+            fetch(file, {method: 'HEAD', cache: 'no-store'})
+            .then(response => ({200: true, 404: false})[response.status])
+            .catch(exception => undefined);
+        
+        
+        /*
+        function doesFileExist(urlToFile){
+            var xhr = new XMLHttpRequest();
+            xhr.open('HEAD', urlToFile, false);
+            xhr.send();
 
+            if (xhr.status == "404") {
+                alert("File doesn't exist");
+                return false;
+            } else {
+                alert("File exists");
+                return true;
+            }
+        }
+        */
 
         var $gohome = $("a#gohome");
         $gohome.on("click",function(){
             $("#page").prop("data","pages/landing.html");
         });
 
+
         var $pagelink = $(".pagelink");
         $pagelink.on("click",function(){
             var i = $pagelink.index(this);
-            $("#page").prop("data","pages/" + pagelist[i]);
+            var tmp = "pages/" + pagelist[i];
+            
+            let real = fileExists(tmp);
+            if(real) {alert("ITS REAL!");
+                $("#page").prop("data",tmp);
+            }
+            
+            
         });
 
         var $linkslink = $(".linkslink");
