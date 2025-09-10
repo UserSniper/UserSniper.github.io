@@ -70,28 +70,25 @@
 
 
 
-        
+        /*
         const fileExists = file =>
             fetch(file, {method: 'HEAD', cache: 'no-store'})
             .then(response => ({200: true, 404: false})[response.status])
             .catch(exception => undefined);
+        */
         
         
-        /*
-        function doesFileExist(urlToFile){
-            var xhr = new XMLHttpRequest();
-            xhr.open('HEAD', urlToFile, false);
-            xhr.send();
-
-            if (xhr.status == "404") {
-                alert("File doesn't exist");
-                return false;
+        function fileExists(url) {
+            if(url){
+                var req = new XMLHttpRequest();
+                req.open('HEAD', url, false);
+                req.send();
+                return req.status==200;
             } else {
-                alert("File exists");
-                return true;
+                return false;
             }
         }
-        */
+        
 
         var $gohome = $("a#gohome");
         $gohome.on("click",function(){
@@ -104,11 +101,8 @@
             var i = $pagelink.index(this);
             var tmp = "pages/" + pagelist[i];
             
-            let real = fileExists(tmp);
-            if(real) {alert("ITS REAL!");
-                $("#page").prop("data",tmp);
-            }
-            
+            if(fileExists(tmp)){}
+            else{alert("that page isn't real.");}
             
         });
 
