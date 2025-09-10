@@ -22,8 +22,12 @@
             <br>
             <p class="pagelink">stuff i made</p>
             <p class="pagelink">about meeeee</p>
-            <p class="pagelink">test</p>
+            <br>
+            <p class="pagelink">the 404 page</p>
         </div>
+
+
+
 
         <!-- THE HEADER -->
         <div id="topbar">
@@ -59,7 +63,7 @@
             "landing.html",
             "stuff_i_made.html",
             "about.html",
-            "hurb.html"
+            "fek"
         ];
 
         const linkslist = [
@@ -101,9 +105,10 @@
             var i = $pagelink.index(this);
             var tmp = "pages/" + pagelist[i];
             
-            if(fileExists(tmp)){}
-            else{alert("that page isn't real.");}
-            
+            if(!fileExists(tmp)){
+                tmp = "pages/404.html"
+            }
+            $("#page").prop("data",tmp);
         });
 
         var $linkslink = $(".linkslink");
